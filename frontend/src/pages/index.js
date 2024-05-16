@@ -1,15 +1,44 @@
 import Image from "next/image";
 import NearLogo from "/public/near.svg";
 import NextLogo from "/public/next.svg";
+import { useStore } from "@/layout";
 
+// import { sign } from '../helpers/near'
+import { generateAddress } from '../helpers/kdf'
 import styles from "@/styles/app.module.css";
 import {
   DocsCard,
   HelloComponentsCard,
   HelloNearCard,
 } from "@/components/cards";
+import bitcoin from '../helpers/bitcoin'
+import { useEffect } from 'react'
 
 export default function Home() {
+  const { signedAccountId, wallet } = useStore();
+
+  console.log('signedAccountId', signedAccountId)
+  useEffect(() => {
+    const asyncfunc = async () => {
+      const struct = await generateAddress(
+        'secp256k1:4HFcTSodRLVCGNVcGc4Mf2fwBBBxv9jxkGdiW2S2CA1y6UpVVRWKj6RX7d7TDt65k2Bj3w9FU4BGtt43ZvuhCnNt',
+        signedAccountId,
+        'bitcoin,1',
+        'bitcoin'
+      )
+      console.log('{ address, publicKey }', struct)
+
+      const response = await bitcoin.send({
+        from: struct.address,
+        publicKey: struct.publicKey,
+      })
+      // const response = await bitcoin.getBalance({
+      //   address: struct.address,
+      // })
+      console.log('response', response)
+    }
+    asyncfunc()
+  }, [])
   return (
     <main className={styles.main}>
       <div className={styles.description}> </div>

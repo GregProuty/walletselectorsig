@@ -22,9 +22,11 @@
     "@web3-onboard/react": "^2.8.16",
     "@web3-onboard/walletconnect": "^2.5.4",
     "base64-js": "^1.5.1",
+    "bitcoinjs-lib": "^6.1.5",
     "ieee754": "^1.2.1",
+    "keccak": "^3.0.4",
     "near-api-js": "^3.0.4",
-    "near-social-vm": "github:gagdiez/VM" ,
+    "near-social-vm": "github:gagdiez/VM",
     "next": "14.2.0",
     "pino-pretty": "^11.0.0",
     "react": "^18.2.0",
@@ -32,6 +34,7 @@
     "react-bootstrap-icons": "^1.11.4",
     "react-dom": "^18.2.0",
     "react-singleton-hook": "^4.0.1",
+    "xrpl": "^3.0.0",
     "zustand": "^4.5.2"
   },
   "overrides": {

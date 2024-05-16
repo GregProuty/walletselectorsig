@@ -42,6 +42,8 @@ export class Wallet {
     const isSignedIn = walletSelector.isSignedIn();
     const accountId = isSignedIn ? walletSelector.store.getState().accounts[0].accountId : '';
 
+    console.log('walletSelector', walletSelector)
+
     walletSelector.store.observable
       .pipe(
         map(state => state.accounts),

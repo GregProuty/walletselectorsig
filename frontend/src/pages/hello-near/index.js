@@ -16,6 +16,8 @@ export default function HelloNear() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
 
+
+  console.log(wallet)
   useEffect(() => {
     if (!wallet) return;
 
